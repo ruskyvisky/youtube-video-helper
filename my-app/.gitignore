@@ -1,0 +1,7 @@
+# GitHub Pages Deployment
+
+out/
+.next/
+node_modules/
+.env
+
