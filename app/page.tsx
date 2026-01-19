@@ -25,6 +25,7 @@ export default function Home() {
   const [isAssetDrawerOpen, setIsAssetDrawerOpen] = useState(false);
   const [showProjectSelector, setShowProjectSelector] = useState(false);
   const [isHookLibraryOpen, setIsHookLibraryOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const { project, loading, updateProject, reload } = useProject(currentProjectId);
 
@@ -35,10 +36,17 @@ export default function Home() {
     }
   });
 
+  // Client-side mount check
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Load projects on mount
   useEffect(() => {
-    loadProjects();
-  }, []);
+    if (isMounted) {
+      loadProjects();
+    }
+  }, [isMounted]);
 
   async function loadProjects() {
     const allProjects = await getAllProjects();
@@ -290,7 +298,7 @@ export default function Home() {
     });
   };
 
-  if (loading) {
+  if (!isMounted || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
