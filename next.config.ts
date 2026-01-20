@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/youtube-video-script-helper' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/youtube-video-script-helper' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/youtube-video-helper' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/youtube-video-helper' : '',
 };
 
 export default nextConfig;
